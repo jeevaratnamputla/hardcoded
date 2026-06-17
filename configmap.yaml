@@ -1,7 +1,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: tls-bootstrap
 data:
-  API_KEY: "test-12345-abcdef"
-  DB_PASSWORD: "P@ssw0rd123!"
+  tls.key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIICXQIBAAKBgQDcFakeFakeFakeFakeFakeFakeFakeFakeFake
+    -----END RSA PRIVATE KEY-----
+  service-account.json: |
+    {
+      "type": "service_account",
+      "project_id": "demo-project",
+      "private_key_id": "fakekeyid1234567890",
+      "private_key": "-----BEGIN PRIVATE KEY-----FAKE-----END PRIVATE KEY-----",
+      "client_email": "svc-demo@demo-project.iam.gserviceaccount.com"
+    }
